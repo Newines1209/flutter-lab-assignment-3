@@ -7,11 +7,11 @@ class AppRouter {
   static final router = GoRouter(
     routes: [
       GoRoute(
-        path: '/',
+        path: '/', // album list
         builder: (context, state) => const AlbumListScreen(),
       ),
       GoRoute(
-        path: '/detail',
+        path: '/detail', // album detail
         builder: (context, state) {
           final album = state.extra as Album;
           return AlbumDetailScreen(album: album);
