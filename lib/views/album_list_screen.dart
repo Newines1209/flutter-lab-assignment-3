@@ -19,18 +19,28 @@ class AlbumListScreen extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (state is AlbumLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is AlbumError) {
+          } else if (state is AlbumError){
             return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(state.message, textAlign: TextAlign.center),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () => cubit.fetchAlbums(),
-                    child: const Text('Retry'),
+              child: Card(
+                color: Colors.amber[100],
+                margin: const EdgeInsets.symmetric(horizontal: 24),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.warning, color: Colors.redAccent),
+                      const SizedBox(height: 8),
+                      const Text("Could not load albums. Please check your internet connection."),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () => cubit.fetchAlbums(),
+                        child: const Text('Retry'),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             );
           } else if (state is AlbumLoaded) {

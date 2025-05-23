@@ -24,7 +24,12 @@ class MyApp extends StatelessWidget {
         routerConfig: AppRouter.router,
         title: 'Album App',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.deepPurple,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.deepPurple,
+            foregroundColor: Colors.white,
+            centerTitle: true,
+          ),
         ),
       ),
     );
